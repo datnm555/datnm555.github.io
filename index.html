@@ -4,150 +4,389 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dat Nguyen | Senior Software Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --primary: #6c63ff;
+      --secondary: #f857a6;
+      --accent: #00c6ff;
+      --dark: #0f0c29;
+      --card-bg: #1a1a2e;
+      --card-border: rgba(108, 99, 255, 0.3);
+      --text: #e0e0f0;
+      --text-muted: #9090b0;
+      --gradient: linear-gradient(135deg, #6c63ff 0%, #f857a6 100%);
+      --gradient2: linear-gradient(135deg, #00c6ff 0%, #6c63ff 100%);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f7f6;
-      color: #333;
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      background: #0a0a1a;
+      background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(108,99,255,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(248,87,166,0.10) 0%, transparent 60%);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
     }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
-    header {
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      padding: 70px 20px 80px;
       text-align: center;
-      margin-bottom: 30px;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 20px;
+      position: relative;
+      overflow: hidden;
     }
-    h1 { color: #2c3e50; font-size: 2.5rem; margin-bottom: 5px; }
-    h2 { color: #34495e; font-size: 1.2rem; font-weight: 400; margin-bottom: 15px; }
-    .contact-info { font-size: 0.95rem; color: #555; }
-    .contact-info a { color: #3498db; text-decoration: none; margin: 0 5px; }
-    section { margin-bottom: 30px; }
-    h3 { color: #2c3e50; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 15px; }
-    .job { margin-bottom: 20px; }
-    .job-title { font-weight: bold; color: #2c3e50; font-size: 1.1rem; }
-    .company { color: #7f8c8d; font-size: 0.95rem; margin-bottom: 8px; }
-    ul { margin-left: 20px; color: #555; font-size: 0.95rem; }
-    li { margin-bottom: 5px; }
-    .skills-flex { display: flex; gap: 20px; }
-    .skills-flex div { flex: 1; }
-    .skills-list, .cert-list { list-style-type: none; margin-left: 0; }
-    .skills-list li, .cert-list li { background: #ecf0f1; display: inline-block; padding: 5px 10px; border-radius: 4px; margin: 0 5px 5px 0; font-size: 0.85rem; }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236c63ff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .avatar-ring {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 3rem;
+      box-shadow: 0 0 40px rgba(108,99,255,0.5);
+      position: relative; z-index: 1;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .hero h1 {
+      font-size: 2.8rem; font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative; z-index: 1;
+    }
+    .hero .tagline {
+      font-size: 1.05rem; color: #a9a9d0; margin: 10px 0 22px;
+      position: relative; z-index: 1;
+    }
+    .contact-chips {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; position: relative; z-index: 1;
+    }
+    .chip {
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.4);
+      color: #c0bff8;
+      padding: 6px 16px; border-radius: 999px; font-size: 0.85rem;
+      text-decoration: none;
+      transition: all .25s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .chip:hover {
+      background: rgba(108,99,255,0.35);
+      border-color: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(108,99,255,0.3);
+    }
+
+    /* ── LAYOUT ── */
+    .wrapper {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: rgba(26, 26, 46, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .card:hover {
+      border-color: rgba(108,99,255,0.6);
+      box-shadow: 0 8px 40px rgba(108,99,255,0.12);
+    }
+    .card + .card { margin-top: 24px; }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after {
+      content: ''; flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(108,99,255,0.5), transparent);
+    }
+
+    /* ── SKILLS ── */
+    .skill-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin: 4px 3px;
+      transition: transform .2s;
+    }
+    .skill-tag:hover { transform: scale(1.05); }
+    .tag-purple  { background: rgba(108,99,255,0.2); border: 1px solid rgba(108,99,255,0.5); color: #b8b3ff; }
+    .tag-pink    { background: rgba(248,87,166,0.2); border: 1px solid rgba(248,87,166,0.5); color: #ffadd6; }
+    .tag-cyan    { background: rgba(0,198,255,0.15); border: 1px solid rgba(0,198,255,0.4);  color: #80e4ff; }
+    .tag-green   { background: rgba(0,255,136,0.12); border: 1px solid rgba(0,255,136,0.35); color: #7dffc2; }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .cert-item:last-child { border-bottom: none; }
+    .cert-icon {
+      width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+      background: var(--gradient); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .cert-name { font-size: 0.9rem; font-weight: 600; color: #d0d0f0; }
+    .cert-provider { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ── EDUCATION ── */
+    .edu-block { display: flex; gap: 14px; align-items: flex-start; }
+    .edu-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: var(--gradient2);
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .edu-school { font-weight: 700; font-size: 1rem; color: #e0e0f0; }
+    .edu-degree { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ── EXPERIENCE ── */
+    .timeline { position: relative; padding-left: 20px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+      border-radius: 2px;
+    }
+    .job { position: relative; padding: 0 0 28px 24px; }
+    .job::before {
+      content: ''; position: absolute; left: -5px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--gradient); box-shadow: 0 0 10px rgba(108,99,255,0.7);
+    }
+    .job-header { margin-bottom: 8px; }
+    .job-title {
+      font-weight: 700; font-size: 1rem; color: #e8e8ff;
+    }
+    .job-meta {
+      font-size: 0.82rem; color: var(--text-muted); margin-top: 3px;
+    }
+    .job-meta .company-name {
+      background: var(--gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; font-weight: 600;
+    }
+    .job ul { margin-left: 0; list-style: none; }
+    .job li {
+      font-size: 0.88rem; color: #b0b0cc; padding: 3px 0 3px 16px;
+      position: relative;
+    }
+    .job li::before {
+      content: '▸'; position: absolute; left: 0; color: var(--primary);
+    }
+
+    /* ── SUMMARY ── */
+    .summary-text {
+      font-size: 0.93rem; color: #b8b8d8; line-height: 1.8;
+    }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .skills-flex { flex-direction: column; gap: 0; }
-      .container { margin: 20px; padding: 20px; }
+      .wrapper { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Dat Nguyen</h1>
-      <h2>Senior Software Engineer @ Vault22 | Building Scalable Financial Solutions</h2>
-      <div class="contact-info">
-        Hanoi, Vietnam | 
-        <a href="mailto:mydatng@gmail.com">mydatng@gmail.com</a> | 
-        <a href="tel:+84911350555">+84911350555</a> |
-        <a href="https://www.linkedin.com/in/datnm555" target="_blank">LinkedIn</a> |
-        <a href="https://github.com/datnm555" target="_blank">GitHub</a>
-      </div>
-    </header>
 
-    <section>
-      <h3>Summary</h3>
-      <p>Senior Software Engineer with over ten years of experience building secure, scalable financial platforms across Southeast Asia, the Middle East, and Africa. Currently at Vault22, backed by SC Ventures (Standard Chartered) and Old Mutual, where I architect core backend systems powering Open Finance and Wealth Management products for users across the MEA region. Previously a founding engineer at Autumn. I thrive at the intersection of fintech domain expertise and hands-on engineering, delivering solutions in C#, .NET Core, AWS, and MongoDB that help people take control of their financial lives.</p>
-    </section>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="avatar-ring">👨‍💻</div>
+    <h1>Dat Nguyen</h1>
+    <p class="tagline">Senior Software Engineer · Vault22 · Building Scalable Financial Solutions</p>
+    <div class="contact-chips">
+      <span class="chip">📍 Hanoi, Vietnam</span>
+      <a class="chip" href="mailto:mydatng@gmail.com">✉️ mydatng@gmail.com</a>
+      <a class="chip" href="tel:+84911350555">📞 +84 911 350 555</a>
+      <a class="chip" href="https://www.linkedin.com/in/datnm555" target="_blank">🔗 LinkedIn</a>
+      <a class="chip" href="https://github.com/datnm555" target="_blank">🐙 GitHub</a>
+    </div>
+  </div>
 
-    <section>
-      <h3>Experience</h3>
-      
-      <div class="job">
-        <div class="job-title">Senior Software Engineer</div>
-        <div class="company">Vault22 | Oct 2024 - Present | South Africa</div>
-        <ul>
-          <li>Architect and develop critical backend microservices and REST APIs supporting account aggregation, transaction processing, and wealth tracking across 20+ repositories.</li>
-          <li>Enhance system scalability by contributing to event-driven architecture using AWS services for asynchronous data processing.</li>
-          <li>Design and optimize MongoDB schemas to handle large volumes of sensitive financial data with high-performance real-time insights.</li>
-        </ul>
+  <!-- MAIN CONTENT -->
+  <div class="wrapper">
+
+    <!-- LEFT SIDEBAR -->
+    <div>
+
+      <!-- Summary -->
+      <div class="card">
+        <div class="section-title">About Me</div>
+        <p class="summary-text">
+          Senior Software Engineer with <strong style="color:#c0bff8">10+ years</strong> of experience building secure, scalable financial platforms across <strong style="color:#c0bff8">Southeast Asia, the Middle East, and Africa</strong>. Currently at Vault22, crafting next-gen wealth management solutions.
+        </p>
       </div>
 
-      <div class="job">
-        <div class="job-title">Senior Software Development Engineer</div>
-        <div class="company">Autumn (SC Ventures) | Sep 2022 - Oct 2024 | Singapore</div>
-        <ul>
-          <li>Founding engineer, architecting backend services for key financial planning features including Net Worth Calculator, Retirement Planner, and Investment Diversification.</li>
-          <li>Built and scaled core REST APIs using .NET and C# serving as the backbone for all client applications.</li>
-          <li>Implemented distributed tracing in Datadog and designed API Key Authentication middleware to secure external APIs using AWS Secrets Manager.</li>
-        </ul>
+      <!-- Skills -->
+      <div class="card">
+        <div class="section-title">Top Skills</div>
+        <div>
+          <span class="skill-tag tag-purple">C# / .NET Core</span>
+          <span class="skill-tag tag-cyan">AWS</span>
+          <span class="skill-tag tag-pink">MongoDB</span>
+          <span class="skill-tag tag-green">DDD</span>
+          <span class="skill-tag tag-purple">Microservices</span>
+          <span class="skill-tag tag-cyan">REST APIs</span>
+          <span class="skill-tag tag-pink">Hangfire</span>
+          <span class="skill-tag tag-green">SQL</span>
+          <span class="skill-tag tag-purple">Agile / Scrum</span>
+          <span class="skill-tag tag-cyan">Datadog</span>
+          <span class="skill-tag tag-pink">Event-Driven</span>
+        </div>
       </div>
 
-      <div class="job">
-        <div class="job-title">Senior Software Engineer</div>
-        <div class="company">Techcombank (TCB) | Jan 2021 - Aug 2022 | Hanoi</div>
-        <ul>
-          <li>Led end-to-end development of critical system modules, overseeing technical design, implementation, and delivery.</li>
-          <li>Served as team Scrum Master, coaching the squad on Agile principles and facilitating all ceremonies.</li>
-          <li>Mentored the engineering team by leading weekly knowledge-sharing sessions on AWS best practices.</li>
-        </ul>
+      <!-- Certifications -->
+      <div class="card">
+        <div class="section-title">Certifications</div>
+        <div class="cert-item">
+          <div class="cert-icon">☁️</div>
+          <div>
+            <div class="cert-name">AWS Certified Developer</div>
+            <div class="cert-provider">Amazon Web Services</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🏗️</div>
+          <div>
+            <div class="cert-name">AWS Solutions Architect – Associate</div>
+            <div class="cert-provider">Amazon Web Services</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🤖</div>
+          <div>
+            <div class="cert-name">GitHub Copilot Productivity</div>
+            <div class="cert-provider">GitHub</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">⚙️</div>
+          <div>
+            <div class="cert-name">DevOps on AWS</div>
+            <div class="cert-provider">Amazon Web Services</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">💡</div>
+          <div>
+            <div class="cert-name">Enterprise Design Thinking</div>
+            <div class="cert-provider">IBM</div>
+          </div>
+        </div>
       </div>
-      
-      <div class="job">
-        <div class="job-title">Senior Software Developer</div>
-        <div class="company">NTQ Solution JSC | Dec 2018 - Dec 2020 | Hanoi</div>
-      </div>
-      
-      <div class="job">
-        <div class="job-title">Software Engineer</div>
-        <div class="company">Fujitsu | Sep 2017 - Dec 2018 | Hanoi</div>
-      </div>
-      
-      <div class="job">
-        <div class="job-title">C# Developer</div>
-        <div class="company">Rikkeisoft | Jan 2016 - Sep 2017 | Hanoi</div>
-      </div>
-    </section>
 
-    <div class="skills-flex">
-      <section>
-        <h3>Top Skills</h3>
-        <ul class="skills-list">
-          <li>C# / .NET Core</li>
-          <li>AWS</li>
-          <li>MongoDB</li>
-          <li>Domain-Driven Design (DDD)</li>
-          <li>Hangfire</li>
-          <li>SQL</li>
-          <li>Agile / Scrum</li>
-        </ul>
-      </section>
-      
-      <section>
-        <h3>Certifications</h3>
-        <ul class="cert-list">
-          <li>AWS Certified Developer</li>
-          <li>AWS Solutions Architect - Associate</li>
-          <li>GitHub Copilot Productivity</li>
-          <li>DevOps on AWS</li>
-          <li>Enterprise Design Thinking</li>
-        </ul>
-      </section>
+      <!-- Education -->
+      <div class="card">
+        <div class="section-title">Education</div>
+        <div class="edu-block">
+          <div class="edu-icon">🎓</div>
+          <div>
+            <div class="edu-school">FPT University</div>
+            <div class="edu-degree">Bachelor's in Engineering · 2011 – 2015</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <section>
-      <h3>Education</h3>
-      <div class="job">
-        <div class="job-title">FPT University</div>
-        <div class="company">Bachelor's degree, Engineering | 2011 - 2015</div>
+    <!-- RIGHT: EXPERIENCE -->
+    <div class="card">
+      <div class="section-title">Experience</div>
+      <div class="timeline">
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Senior Software Engineer</div>
+            <div class="job-meta"><span class="company-name">Vault22</span> · Oct 2024 – Present · South Africa</div>
+          </div>
+          <ul>
+            <li>Architect and develop critical backend microservices and REST APIs supporting account aggregation, transaction processing, and wealth tracking across 20+ repositories.</li>
+            <li>Enhance system scalability by contributing to event-driven architecture using AWS services for asynchronous data processing.</li>
+            <li>Design and optimize MongoDB schemas to handle large volumes of sensitive financial data with high-performance real-time insights.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Senior Software Development Engineer</div>
+            <div class="job-meta"><span class="company-name">Autumn (SC Ventures)</span> · Sep 2022 – Oct 2024 · Singapore</div>
+          </div>
+          <ul>
+            <li>Founding engineer, architecting backend services for key financial planning features including Net Worth Calculator, Retirement Planner, and Investment Diversification.</li>
+            <li>Built and scaled core REST APIs using .NET and C# serving as the backbone for all client applications.</li>
+            <li>Implemented distributed tracing in Datadog and designed API Key Authentication middleware to secure external APIs using AWS Secrets Manager.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Senior Software Engineer</div>
+            <div class="job-meta"><span class="company-name">Techcombank (TCB)</span> · Jan 2021 – Aug 2022 · Hanoi</div>
+          </div>
+          <ul>
+            <li>Led end-to-end development of critical system modules, overseeing technical design, implementation, and delivery.</li>
+            <li>Served as team Scrum Master, coaching the squad on Agile principles and facilitating all ceremonies.</li>
+            <li>Mentored the engineering team by leading weekly knowledge-sharing sessions on AWS best practices.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Senior Software Developer</div>
+            <div class="job-meta"><span class="company-name">NTQ Solution JSC</span> · Dec 2018 – Dec 2020 · Hanoi</div>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Software Engineer</div>
+            <div class="job-meta"><span class="company-name">Fujitsu</span> · Sep 2017 – Dec 2018 · Hanoi</div>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">C# Developer</div>
+            <div class="job-meta"><span class="company-name">Rikkeisoft</span> · Jan 2016 – Sep 2017 · Hanoi</div>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
+
   </div>
 </body>
 </html>
