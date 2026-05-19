@@ -213,6 +213,62 @@
       font-size: 0.93rem; color: #b8b8d8; line-height: 1.8;
     }
 
+    /* ── TECH STACK (categorized) ── */
+    .stack-row { margin-bottom: 14px; }
+    .stack-row:last-child { margin-bottom: 0; }
+    .stack-label {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: #a9a4ff;
+      margin-bottom: 6px;
+    }
+    .stack-tags { display: block; }
+
+    /* ── HIGHLIGHT METRICS ── */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .metric {
+      text-align: center;
+      padding: 10px 6px;
+      border-radius: 10px;
+      background: rgba(108,99,255,0.08);
+      border: 1px solid rgba(108,99,255,0.25);
+    }
+    .metric-value {
+      font-weight: 800; font-size: 1.15rem;
+      background: var(--gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .metric-label {
+      font-size: 0.7rem; color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── ERA SUB-HEADER inside a job ── */
+    .era {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-left: 2px solid var(--secondary);
+      background: rgba(248,87,166,0.06);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #ffadd6;
+    }
+    .tech-line {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-style: italic;
+      padding-left: 16px;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .wrapper { grid-template-columns: 1fr; }
@@ -226,13 +282,14 @@
   <div class="hero">
     <div class="avatar-ring">👨‍💻</div>
     <h1>Dat Nguyen</h1>
-    <p class="tagline">Senior Software Engineer · Vault22 · Building Scalable Financial Solutions</p>
+    <p class="tagline">Senior Software Engineer &amp; Technical Lead · Fintech on .NET &amp; AWS · 8+ Years</p>
     <div class="contact-chips">
-      <span class="chip">📍 Hanoi, Vietnam</span>
-      <a class="chip" href="mailto:mydatng@gmail.com">✉️ mydatng@gmail.com</a>
+      <span class="chip">📍 Hanoi, Vietnam · Remote</span>
+      <a class="chip" href="mailto:datnm555.work@gmail.com">✉️ datnm555.work@gmail.com</a>
       <a class="chip" href="tel:+84911350555">📞 +84 911 350 555</a>
-      <a class="chip" href="https://www.linkedin.com/in/datnm555" target="_blank">🔗 LinkedIn</a>
-      <a class="chip" href="https://github.com/datnm555" target="_blank">🐙 GitHub</a>
+      <a class="chip" href="https://www.linkedin.com/in/datnm555" target="_blank" rel="noopener">🔗 LinkedIn</a>
+      <a class="chip" href="https://github.com/datnm555" target="_blank" rel="noopener">🐙 GitHub</a>
+      <a class="chip" href="https://dat-nguyen-portfolio.s3-website-ap-southeast-1.amazonaws.com/" target="_blank" rel="noopener">🌐 Portfolio</a>
     </div>
   </div>
 
@@ -242,29 +299,139 @@
     <!-- LEFT SIDEBAR -->
     <div>
 
-      <!-- Summary -->
+      <!-- Profile -->
       <div class="card">
-        <div class="section-title">About Me</div>
+        <div class="section-title">Profile</div>
         <p class="summary-text">
-          Senior Software Engineer with <strong style="color:#c0bff8">10+ years</strong> of experience building secure, scalable financial platforms across <strong style="color:#c0bff8">Southeast Asia, the Middle East, and Africa</strong>. Currently at Vault22, crafting next-gen wealth management solutions.
+          Senior Software Engineer and Technical Lead with <strong style="color:#c0bff8">8+ years</strong> building <strong style="color:#c0bff8">fintech and banking backends</strong> in regulated environments — Vault22 (multi-region personal finance, SA/UAE/MEA), Autumn (SC Ventures × Franklin Templeton), and Techcombank (Vietnam's leading commercial bank). Specialised in <strong style="color:#c0bff8">.NET microservices on AWS</strong> serving millions of financial transactions, with deep experience in <strong style="color:#c0bff8">MongoDB sharding</strong>, event-driven architecture, and Domain-Driven Design. Proven track record of leading teams of 5–12 engineers and shipping secure, scalable systems from zero to production.
         </p>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-value">8+</div>
+            <div class="metric-label">Years in Fintech</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">1.08M+</div>
+            <div class="metric-label">Users Served</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">3</div>
+            <div class="metric-label">AWS Certs</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Skills -->
+      <!-- Tech Stack (categorized) -->
       <div class="card">
-        <div class="section-title">Top Skills</div>
+        <div class="section-title">Tech Stack</div>
+
+        <div class="stack-row">
+          <span class="stack-label">Languages</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-purple">C#</span>
+            <span class="skill-tag tag-purple">Java</span>
+            <span class="skill-tag tag-purple">SQL</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <span class="stack-label">Backend</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-cyan">.NET 6 – 10</span>
+            <span class="skill-tag tag-cyan">ASP.NET Core</span>
+            <span class="skill-tag tag-cyan">Web API</span>
+            <span class="skill-tag tag-cyan">gRPC</span>
+            <span class="skill-tag tag-cyan">SignalR</span>
+            <span class="skill-tag tag-cyan">EF Core</span>
+            <span class="skill-tag tag-cyan">ABP Framework</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <span class="stack-label">Cloud (AWS)</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-pink">ECS</span>
+            <span class="skill-tag tag-pink">Lambda</span>
+            <span class="skill-tag tag-pink">SQS / SNS</span>
+            <span class="skill-tag tag-pink">S3 / CloudFront</span>
+            <span class="skill-tag tag-pink">RDS / DynamoDB</span>
+            <span class="skill-tag tag-pink">API Gateway</span>
+            <span class="skill-tag tag-pink">Secrets Manager</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <span class="stack-label">Data</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-green">MongoDB (sharded Atlas)</span>
+            <span class="skill-tag tag-green">PostgreSQL</span>
+            <span class="skill-tag tag-green">SQL Server</span>
+            <span class="skill-tag tag-green">Redis</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <span class="stack-label">Messaging &amp; Jobs</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-purple">MassTransit</span>
+            <span class="skill-tag tag-purple">RabbitMQ</span>
+            <span class="skill-tag tag-purple">Hangfire</span>
+            <span class="skill-tag tag-purple">MediatR</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <span class="stack-label">Architecture</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-cyan">Microservices</span>
+            <span class="skill-tag tag-cyan">Clean Architecture</span>
+            <span class="skill-tag tag-cyan">DDD</span>
+            <span class="skill-tag tag-cyan">Event-Driven</span>
+            <span class="skill-tag tag-cyan">CQRS</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <span class="stack-label">DevOps &amp; Observability</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-pink">Docker</span>
+            <span class="skill-tag tag-pink">GitHub Actions</span>
+            <span class="skill-tag tag-pink">Terraform</span>
+            <span class="skill-tag tag-pink">Datadog</span>
+            <span class="skill-tag tag-pink">OpenTelemetry</span>
+            <span class="skill-tag tag-pink">SonarQube</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <span class="stack-label">Testing &amp; Security</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-green">xUnit / NUnit</span>
+            <span class="skill-tag tag-green">NSubstitute</span>
+            <span class="skill-tag tag-green">Shouldly</span>
+            <span class="skill-tag tag-green">OAuth 2.0 / JWT</span>
+            <span class="skill-tag tag-green">OWASP Top 10</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <span class="stack-label">Leadership</span>
+          <div class="stack-tags">
+            <span class="skill-tag tag-purple">Team Leadership</span>
+            <span class="skill-tag tag-purple">Scrum Master</span>
+            <span class="skill-tag tag-purple">Mentoring</span>
+            <span class="skill-tag tag-purple">Code Review</span>
+            <span class="skill-tag tag-purple">Stakeholder Mgmt</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="card">
+        <div class="section-title">Languages</div>
         <div>
-          <span class="skill-tag tag-purple">C# / .NET Core</span>
-          <span class="skill-tag tag-cyan">AWS</span>
-          <span class="skill-tag tag-pink">MongoDB</span>
-          <span class="skill-tag tag-green">DDD</span>
-          <span class="skill-tag tag-purple">Microservices</span>
-          <span class="skill-tag tag-cyan">REST APIs</span>
-          <span class="skill-tag tag-pink">Hangfire</span>
-          <span class="skill-tag tag-green">SQL</span>
-          <span class="skill-tag tag-purple">Agile / Scrum</span>
-          <span class="skill-tag tag-cyan">Datadog</span>
-          <span class="skill-tag tag-pink">Event-Driven</span>
+          <span class="skill-tag tag-purple">Vietnamese — Native</span>
+          <span class="skill-tag tag-cyan">English — Professional Working</span>
         </div>
       </div>
 
@@ -274,36 +441,83 @@
         <div class="cert-item">
           <div class="cert-icon">☁️</div>
           <div>
-            <div class="cert-name">AWS Certified Developer</div>
+            <div class="cert-name">AWS Certified Developer — Associate</div>
             <div class="cert-provider">Amazon Web Services</div>
           </div>
         </div>
         <div class="cert-item">
           <div class="cert-icon">🏗️</div>
           <div>
-            <div class="cert-name">AWS Solutions Architect – Associate</div>
+            <div class="cert-name">AWS Solutions Architect — Associate</div>
             <div class="cert-provider">Amazon Web Services</div>
           </div>
         </div>
         <div class="cert-item">
-          <div class="cert-icon">🤖</div>
+          <div class="cert-icon">☁️</div>
           <div>
-            <div class="cert-name">GitHub Copilot Productivity</div>
-            <div class="cert-provider">GitHub</div>
+            <div class="cert-name">AWS Cloud Practitioner</div>
+            <div class="cert-provider">Amazon Web Services</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🧩</div>
+          <div>
+            <div class="cert-name">AWS Cloud Quest: Solutions Architect</div>
+            <div class="cert-provider">Amazon Web Services</div>
           </div>
         </div>
         <div class="cert-item">
           <div class="cert-icon">⚙️</div>
           <div>
-            <div class="cert-name">DevOps on AWS</div>
+            <div class="cert-name">DevOps on AWS: Release and Deploy</div>
             <div class="cert-provider">Amazon Web Services</div>
           </div>
         </div>
         <div class="cert-item">
           <div class="cert-icon">💡</div>
           <div>
-            <div class="cert-name">Enterprise Design Thinking</div>
+            <div class="cert-name">Enterprise Design Thinking Practitioner</div>
             <div class="cert-provider">IBM</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🤖</div>
+          <div>
+            <div class="cert-name">Boost Your Productivity with GitHub Copilot</div>
+            <div class="cert-provider">GitHub</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🧠</div>
+          <div>
+            <div class="cert-name">AI For Everyone</div>
+            <div class="cert-provider">DeepLearning.AI</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🗄️</div>
+          <div>
+            <div class="cert-name">SQL (Intermediate)</div>
+            <div class="cert-provider">HackerRank</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Honors & Awards -->
+      <div class="card">
+        <div class="section-title">Honors &amp; Awards</div>
+        <div class="cert-item">
+          <div class="cert-icon">🏆</div>
+          <div>
+            <div class="cert-name">Honorable Student — Summer 2015 Semester</div>
+            <div class="cert-provider">FPT University</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🇬🇧</div>
+          <div>
+            <div class="cert-name">Academic Preparatory English Level 5 — Summit 1</div>
+            <div class="cert-provider">≈ TOEIC 700 – 800</div>
           </div>
         </div>
       </div>
@@ -314,8 +528,8 @@
         <div class="edu-block">
           <div class="edu-icon">🎓</div>
           <div>
-            <div class="edu-school">FPT University</div>
-            <div class="edu-degree">Bachelor's in Engineering · 2011 – 2015</div>
+            <div class="edu-school">FPT University, Hanoi</div>
+            <div class="edu-degree">B.Eng, Software Engineering · GPA 7.0 / 10 · Jan 2011 – Jan 2015</div>
           </div>
         </div>
       </div>
@@ -329,45 +543,66 @@
 
         <div class="job">
           <div class="job-header">
-            <div class="job-title">Senior Software Engineer</div>
-            <div class="job-meta"><span class="company-name">Vault22</span> · Oct 2024 – Present · South Africa</div>
+            <div class="job-title">Senior Software Engineer · Founding Engineer</div>
+            <div class="job-meta"><span class="company-name">Vault22</span> (formerly Autumn — SC Ventures × Franklin Templeton, merged with 22seven in 2024) · Sep 2022 – Present · Remote (Hanoi)</div>
           </div>
+          <p style="font-size:0.88rem; color:#b0b0cc; margin: 6px 0 4px;">
+            Joined as a <strong style="color:#c0bff8">founding backend engineer</strong> at Autumn, an SC Ventures &amp; Franklin Templeton-backed fintech building a bank-agnostic platform for consolidated financial and health planning. After the 2024 merger with 22seven (Standard Bank), continued as senior engineer on Vault22's core platform team — now serving <strong style="color:#c0bff8">1,088,925+ users</strong> across South Africa, UAE, and emerging markets.
+          </p>
+
+          <div class="era">Vault22 era · Oct 2024 – Present · Senior Software Engineer</div>
           <ul>
-            <li>Architect and develop critical backend microservices and REST APIs supporting account aggregation, transaction processing, and wealth tracking across 20+ repositories.</li>
-            <li>Enhance system scalability by contributing to event-driven architecture using AWS services for asynchronous data processing.</li>
-            <li>Design and optimize MongoDB schemas to handle large volumes of sensitive financial data with high-performance real-time insights.</li>
+            <li>Architected and delivered backend microservices for the core platform — account aggregation, transaction processing, and wealth tracking across multiple services (Core API, Saasport admin, jill / jack / steph).</li>
+            <li>Designed event-driven workflows using <strong style="color:#c0bff8">Amazon SQS</strong> for asynchronous account aggregation and transaction processing.</li>
+            <li>Optimised MongoDB queries and sharding strategy on the <strong style="color:#c0bff8">Briteblue cluster</strong>, reducing p95 API latency on hot customer endpoints.</li>
+            <li>Championed engineering best practices: <strong style="color:#c0bff8">Domain-Driven Design</strong>, comprehensive unit testing, and rigorous code review.</li>
+            <li>Hardened platform security through OAuth 2.0 / JWT authentication, secure document storage, and adherence to financial-services compliance standards.</li>
+            <li>Collaborated with product, design, and engineering teams across multiple time zones (SA, UAE, Singapore).</li>
           </ul>
+          <div class="tech-line">Tech: C#, .NET 8, MongoDB (sharded Atlas), AWS (ECS, Lambda, SQS, S3, CloudFront), Docker, GitHub Actions, Datadog.</div>
+
+          <div class="era">Autumn era · Sep 2022 – Oct 2024 · Founding Engineer</div>
+          <ul>
+            <li>Architected backend services for flagship financial planning features — <strong style="color:#c0bff8">Net Worth Calculator, Retirement Planner, Investment Diversification, digital Will Creation, and Goal-Based Savings</strong>.</li>
+            <li>Built and scaled the core REST API platform (<strong style="color:#c0bff8">.NET 6, C#</strong>) from zero on .NET Core Web API with ABP framework and MS SQL Server on AWS.</li>
+            <li>Designed MongoDB schemas for sensitive financial data, including secure document storage with encryption-at-rest for digital Will artifacts.</li>
+            <li>Established the team's engineering excellence playbook: unit testing strategy (xUnit), code review process, and CI/CD pipeline.</li>
+            <li>Implemented Datadog distributed tracing (later proposed OpenTelemetry migration) and API Key Authentication middleware via AWS Secrets Manager.</li>
+            <li>Partnered directly with product leadership across a distributed team in Singapore, UK, and US.</li>
+          </ul>
+          <div class="tech-line">Tech: C# 10, .NET 6/7, ASP.NET Core, EF Core 6, ABP, MS SQL Server, MassTransit, RabbitMQ, Hangfire, AWS (S3, SecretsManager, SES, SSM), Polly, Refit, MediatR, xUnit, NSubstitute, Shouldly.</div>
         </div>
 
         <div class="job">
           <div class="job-header">
-            <div class="job-title">Senior Software Development Engineer</div>
-            <div class="job-meta"><span class="company-name">Autumn (SC Ventures)</span> · Sep 2022 – Oct 2024 · Singapore</div>
-          </div>
-          <ul>
-            <li>Founding engineer, architecting backend services for key financial planning features including Net Worth Calculator, Retirement Planner, and Investment Diversification.</li>
-            <li>Built and scaled core REST APIs using .NET and C# serving as the backbone for all client applications.</li>
-            <li>Implemented distributed tracing in Datadog and designed API Key Authentication middleware to secure external APIs using AWS Secrets Manager.</li>
-          </ul>
-        </div>
-
-        <div class="job">
-          <div class="job-header">
-            <div class="job-title">Senior Software Engineer</div>
+            <div class="job-title">Senior Software Engineer · Scrum Master</div>
             <div class="job-meta"><span class="company-name">Techcombank (TCB)</span> · Jan 2021 – Aug 2022 · Hanoi</div>
           </div>
+          <p style="font-size:0.88rem; color:#b0b0cc; margin: 6px 0 4px;">
+            Senior engineer and Scrum Master at Vietnam's largest private commercial bank, leading delivery of business-banking and risk-management systems serving corporate customers.
+          </p>
           <ul>
-            <li>Led end-to-end development of critical system modules, overseeing technical design, implementation, and delivery.</li>
-            <li>Served as team Scrum Master, coaching the squad on Agile principles and facilitating all ceremonies.</li>
-            <li>Mentored the engineering team by leading weekly knowledge-sharing sessions on AWS best practices.</li>
+            <li>Led end-to-end delivery of critical system modules — from technical design through production handover.</li>
+            <li>Served as Scrum Master, coaching agile practices and lifting sprint predictability via burndown monitoring.</li>
+            <li>Earned <strong style="color:#c0bff8">AWS Certified Developer Associate</strong> and <strong style="color:#c0bff8">Solutions Architect Associate</strong> during this role.</li>
+            <li>Led weekly 2-hour AWS knowledge-sharing sessions — 10 team members subsequently earned AWS certs.</li>
+            <li>Applied Design Thinking to consult directly with clients and translate requirements into actionable specifications.</li>
           </ul>
+          <div class="tech-line">Tech: C#, .NET Core, AWS, SQL Server, Agile/Scrum.</div>
         </div>
 
         <div class="job">
           <div class="job-header">
-            <div class="job-title">Senior Software Developer</div>
+            <div class="job-title">Senior Software Engineer · Team Lead · Scrum Master</div>
             <div class="job-meta"><span class="company-name">NTQ Solution JSC</span> · Dec 2018 – Dec 2020 · Hanoi</div>
           </div>
+          <ul>
+            <li>Led a team of <strong style="color:#c0bff8">7 engineers</strong> as Team Lead and Scrum Master, improving sprint estimation accuracy by <strong style="color:#c0bff8">30%</strong>.</li>
+            <li>Championed adoption of <strong style="color:#c0bff8">Clean Architecture</strong> in .NET Core projects, becoming the team's reference standard for new initiatives.</li>
+            <li>Architected core system modules from the ground up, designing high-level diagrams and foundational project structure.</li>
+            <li>Acted as primary technical liaison between development and client stakeholders (Japan-market focus), defining IT strategy and consulting on requirement analysis.</li>
+          </ul>
+          <div class="tech-line">Tech: C#, .NET Core, Clean Architecture, Agile/Scrum.</div>
         </div>
 
         <div class="job">
@@ -375,6 +610,12 @@
             <div class="job-title">Software Engineer</div>
             <div class="job-meta"><span class="company-name">Fujitsu</span> · Sep 2017 – Dec 2018 · Hanoi</div>
           </div>
+          <ul>
+            <li>Developed and maintained core modules for a <strong style="color:#c0bff8">public-transport bus management platform</strong> serving many daily routes.</li>
+            <li>Applied Agile methodologies and participated in code reviews to improve sprint predictability and code quality.</li>
+            <li>Gained deep domain knowledge in public-transport logistics, translating complex business needs into technical solutions.</li>
+          </ul>
+          <div class="tech-line">Tech: C#, .NET, SQL Server.</div>
         </div>
 
         <div class="job">
@@ -382,6 +623,11 @@
             <div class="job-title">C# Developer</div>
             <div class="job-meta"><span class="company-name">Rikkeisoft</span> · Jan 2016 – Sep 2017 · Hanoi</div>
           </div>
+          <ul>
+            <li>Developed software modules for multiple outsourced client projects (Japan market) with comprehensive unit-test coverage.</li>
+            <li>Authored technical documentation and collaborated with product teams on requirement analysis.</li>
+          </ul>
+          <div class="tech-line">Tech: C#, .NET Framework, SQL Server.</div>
         </div>
 
       </div>
