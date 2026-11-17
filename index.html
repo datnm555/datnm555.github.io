@@ -260,7 +260,14 @@
     .job p[style], .card > p[style] { color: var(--text-muted) !important; }
 
     /* ── RESPONSIVE ── */
+    /* ── CASE STUDIES ── */
+    .cases { padding: 0 var(--pad) 60px; }
+    .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 2.5vw, 40px); margin-top: 20px; }
+    .case-grid .card + .card { margin-top: 0; }
+    .case-title { font-size: 1.1rem; font-weight: 700; color: #e6f6ff; margin-bottom: 4px; }
+    .case-sub { font-family: var(--mono); font-size: .75rem; color: var(--text-muted); margin-bottom: 8px; }
     @media (max-width: 1100px) {
+      .case-grid { grid-template-columns: 1fr; }
       .wrapper { grid-template-columns: 1fr; }
       .hero { grid-template-columns: 1fr; }
       .hero-hud { display: none; }
@@ -711,6 +718,52 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- CASE STUDIES -->
+  <div class="cases">
+    <div class="card">
+      <div class="section-title">Case Studies</div>
+      <div class="case-grid">
+        <div class="card">
+          <div class="case-title">A provider-agnostic bank aggregation pipeline</div>
+          <div class="case-sub">Fintech platform · 1M+ users · multiple countries</div>
+          <div class="era">Problem</div>
+          <p class="summary-text" style="margin:8px 0 0;">Users link accounts from many sources: global aggregators (Plaid, Yodlee), regional banks, open-banking OAuth banks and crypto exchanges. Each provider has its own auth, MFA, webhooks and failure modes, and refreshes were triggered from many places, which made failures hard to trace.</p>
+          <div class="era">Approach</div>
+          <ul class="ai-list">
+            <li>Every refresh trigger (manual refresh, login, post-link, provider webhook) funnels through <strong style="color:#c0bff8">one entry point</strong> into a <strong style="color:#c0bff8">refresh state machine</strong> (.NET), which I helped build; provider-specific code plugs in only after the machine selects the integration.</li>
+            <li>Provider webhooks hit an <strong style="color:#c0bff8">AWS Lambda behind API Gateway</strong> and are forwarded to <strong style="color:#c0bff8">SQS</strong>; the service only consumes queues, with no cron jobs and no inline calls from controllers.</li>
+            <li>Stalled refreshes are resumed by a <strong style="color:#c0bff8">delayed SQS self-message</strong> acting as a watchdog.</li>
+          </ul>
+          <div class="era">Trade-offs</div>
+          <p class="summary-text" style="margin:8px 0 0;">Queues gave retries and isolation from slow providers but made debugging harder. I wrote a <strong style="color:#c0bff8">trigger map</strong> (every path that starts or resumes a refresh) and an <strong style="color:#c0bff8">end-to-end sandbox check</strong> (sandbox bank link → queue message → accounts created) that the team uses to diagnose "linked but no accounts" incidents.</p>
+          <div class="era">Result</div>
+          <p class="summary-text" style="margin:8px 0 0;">New providers are added without touching the trigger layer, and end-to-end processing time dropped.</p>
+          <div class="tech-line">Stack: C#, .NET 8, MongoDB, AWS Lambda, API Gateway, SQS, Plaid, Yodlee.</div>
+        </div>
+        <div class="card">
+          <div class="case-title">Setting up agentic development for a product team</div>
+          <div class="case-sub">Australian SaaS company · two squads</div>
+          <div class="era">Problem</div>
+          <p class="summary-text" style="margin:8px 0 0;">The team was adopting AI-assisted development under a working agreement: whoever merges owns the outcome, plan before code, no secrets in AI tools, AI usage recorded in PRs. Those rules lived in documents, not in the tools.</p>
+          <div class="era">What I built</div>
+          <ul class="ai-list">
+            <li>An <strong style="color:#c0bff8">orchestrator repo</strong> (no product code) that every Claude Code session loads: repo catalog, <strong style="color:#c0bff8">26 per-repo skills</strong> and keyword routing.</li>
+            <li><strong style="color:#c0bff8">5 specialist agents</strong>: security review, ticket scoping, code search, documentation.</li>
+            <li><strong style="color:#c0bff8">Hooks</strong> that block force-push, pushes to main, hook bypass and destructive resets, so guardrails are deterministic rather than prompt-based.</li>
+            <li>A shared "brain" so several concurrent sessions coordinate through file locks and messages.</li>
+          </ul>
+          <div class="era">Trade-offs</div>
+          <p class="summary-text" style="margin:8px 0 0;">Guardrails live in hooks, not instructions: a prompt can be ignored, a hook cannot. Agents never merge; humans review the diff. Plan-first costs a few minutes up front and saves rework.</p>
+          <div class="era">Team lessons</div>
+          <p class="summary-text" style="margin:8px 0 0;">Agent orchestration makes coding fast, so ticket clarity becomes the bottleneck. An agent's "done" is not done: human verification in DEV is a required gate.</p>
+          <div class="era">Result</div>
+          <p class="summary-text" style="margin:8px 0 0;">The setup is packaged as a <strong style="color:#c0bff8">generator</strong> (bootstrap script, templates, versioned upgrades). I also contributed similar tooling (security-review agent, PR review triage, worktree tooling) to a fintech client's large shared skill orchestrator.</p>
+          <div class="tech-line">Stack: Claude Code (skills, subagents, hooks, MCP), Bash, GitHub.</div>
+        </div>
+      </div>
+    </div>
   </div>
   <script>
     (function () {
