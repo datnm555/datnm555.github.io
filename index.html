@@ -227,11 +227,11 @@
     .job-title { font-weight: 700; font-size: 1.12rem; color: #fff; letter-spacing: -.01em; }
     .job-meta { font-family: var(--mono); font-size: .75rem; color: var(--text-muted); margin-top: 4px; }
     .job-meta .company-name { color: var(--cyan); font-weight: 700; }
-    .job ul { list-style: none; }
-    .job li {
+    .job ul, .ai-list { list-style: none; }
+    .job li, .ai-list li {
       font-size: .9rem; color: #a9bccd; padding: 3px 0 3px 18px; position: relative;
     }
-    .job li::before { content: '›'; position: absolute; left: 2px; color: var(--green); font-family: var(--mono); font-weight: 700; }
+    .job li::before, .ai-list li::before { content: '›'; position: absolute; left: 2px; color: var(--green); font-family: var(--mono); font-weight: 700; }
 
     .era {
       font-family: var(--mono); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
@@ -338,6 +338,20 @@
             <div class="metric-label">Wealth Customers Served</div>
           </div>
         </div>
+      </div>
+
+      <!-- AI-assisted engineering -->
+      <div class="card">
+        <div class="section-title">How I Work with AI</div>
+        <p class="summary-text">
+          I use <strong style="color:#c0bff8">Claude Code</strong> as an everyday engineering tool across multi-repo codebases: agents draft, search and verify; I review and decide. Every change still goes through a branch, a pull request and CI.
+        </p>
+        <ul class="ai-list">
+          <li><strong style="color:#c0bff8">Vault22</strong>: core contributor to the team's Claude Code orchestrator (130+ skills): security-review agent, PR review-thread triage, git worktree tooling, skill self-checks, the bank-aggregation skill, and portable Claude Code / GitHub Copilot starter kits.</li>
+          <li><strong style="color:#c0bff8">OfficeHQ</strong>: built the team's orchestrator from scratch: 26 repo skills, 5 specialist agents, git guardrail hooks enforcing PR-only changes, and a written AI-assisted development process.</li>
+          <li><strong style="color:#c0bff8">Reusable kit</strong>: maintain a generator (bootstrap script, templates, versioned upgrades) that sets up the same agentic workflow on any new multi-repo project.</li>
+          <li><strong style="color:#c0bff8">Guardrails first</strong>: no secrets or client data in prompts or repos, security review before every hand-over, humans own merges.</li>
+        </ul>
       </div>
 
       <!-- Tech Stack (categorized) -->
@@ -601,6 +615,7 @@
             <li>Optimised <strong style="color:#c0bff8">sharded MongoDB Atlas</strong> for high-volume financial data, improving p95 latency; Unit of Work, RedLock.net locking, Polly resilience.</li>
             <li>Tech Lead / architect on key initiatives — Family Finances / Family Circle, <strong style="color:#c0bff8">Wealth Intelligence Platform (500K+ customers)</strong>, Statement Import, Absa Uganda white-label app, investments platform modernisation.</li>
             <li>Also contributed to <strong style="color:#c0bff8">Next.js 14</strong> web &amp; React/Vite admin dashboards (Strapi v4).</li>
+            <li>Core contributor to the team's <strong style="color:#c0bff8">Claude Code agent orchestrator</strong> (130+ skills across services, AWS, MongoDB, Jira / Confluence): added a security-review agent, PR review-thread triage, git worktree tooling and skill self-checks; wrote the bank-aggregation skill; authored portable Claude Code and GitHub Copilot starter kits.</li>
           </ul>
           <div class="tech-line">Tech: C#, .NET 6/8/9/10, ASP.NET Core, Blazor, ML.NET, MongoDB (sharded Atlas), PostgreSQL, AWS (ECS, Lambda, SQS, S3, CloudFront), SignalR, QuickFIX/N (FIX 4.4), GTN, AWS Bedrock + Gemini, Next.js, React, Docker, GitHub Actions, Datadog, Polly, OAuth 2.0, JWT.</div>
         </div>
@@ -637,6 +652,7 @@
             <li>Led a <strong style="color:#c0bff8">UTC + IANA time-zone change across 4 services</strong> (schema + backfill, DST-aware logic) released in one coordinated rollout.</li>
             <li><strong style="color:#c0bff8">Client portal</strong> (.NET API + React / TypeScript): shipped features end to end, including Stripe / eWay card payments and the onboarding wizard.</li>
             <li>Fixed invoicing defects in the legacy ASP.NET MVC / NHibernate billing system; resolved escalated production issues.</li>
+            <li>Built the team's <strong style="color:#c0bff8">Claude Code orchestrator</strong> from scratch: 26 repo skills, 5 specialist agents (security review, ticket scoping, code search, documentation), git guardrail hooks enforcing PR-only changes, and a written AI-assisted development process.</li>
           </ul>
           <div class="tech-line">Tech: C#, .NET 8–10, ASP.NET Core, EF Core, Dapper, NHibernate, React, TypeScript, SQL Server, MariaDB, PostgreSQL, AWS (ECS, SQS, SNS, Cognito), RabbitMQ, Terraform, GitHub Actions.</div>
         </div>
@@ -649,6 +665,7 @@
           <ul>
             <li>Set engineering standards for delivery teams: AI-assisted development workflow and guardrails, code review, Definition of Done.</li>
             <li>Developer competency mapping and upskilling; reusable accelerators and reference implementations for delivery.</li>
+            <li>Maintain an orchestrator generator (bootstrap script, templates, versioned upgrades) that sets up the same agentic workflow on new multi-repo projects.</li>
           </ul>
         </div>
 
